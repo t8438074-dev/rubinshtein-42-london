@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#17140f">
+  <meta name="description" content="A virtual walk along Rubinshtein Street, 42 — a personal art journey through Alena Rubinshtein's works.">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Rubinshtein Street, 42 — Alena Rubinshtein Art Journey</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <main class="experience" id="experience">
+    <div id="panorama" class="panorama" aria-label="Панорамная прогулка по Rubinshtein Street, 42, London"></div>
+    <div class="vignette" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <div class="brand-lockup">
+        <div class="brand-name">RUBINSHTEIN</div>
+        <div class="brand-subtitle">THREE CITIES · ONE ARTIST</div>
+      </div>
+      <div class="location-chip">
+        <span class="location-dot"></span>
+        <span id="locationName">RUBINSHTEIN STREET, 42</span>
+        <span class="location-city">LONDON</span>
+      </div>
+      <button class="icon-button map-button" id="mapButton" aria-label="Показать маршрут" title="Маршрут">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3V6Z"/><path d="M9 3v15M15 6v15"/></svg>
+      </button>
+    </header>
+
+    <section class="intro-card" id="introCard">
+      <div class="intro-kicker">A STREET BECOMES A GALLERY</div>
+      <h1>Rubinshtein Street, 42</h1>
+      <p>Лондонская прогулка среди восьми оригинальных работ Алёны Рубинштейн.</p>
+      <button class="primary-button" id="enterButton">Войти на улицу <span aria-hidden="true">→</span></button>
+      <div class="intro-footnote">Поворачивайте обзор и переходите между четырьмя точками маршрута.</div>
+    </section>
+
+    <div class="scene-caption" id="sceneCaption" aria-live="polite">
+      <span class="caption-kicker" id="captionKicker">ARRIVAL · RUBINSHTEIN STREET, 42</span>
+      <span class="caption-title" id="captionTitle">The street begins here</span>
+    </div>
+
+    <nav class="bottom-nav" aria-label="Навигация по улице">
+      <button class="nav-arrow" id="prevButton" aria-label="Предыдущий участок" disabled>
+        <span aria-hidden="true">←</span><small>НАЗАД</small>
+      </button>
+      <div class="route-progress">
+        <div class="progress-label"><span id="progressText">01 / 04</span><span>RUBINSHTEIN STREET</span></div>
+        <div class="progress-track"><span id="progressFill"></span></div>
+      </div>
+      <button class="nav-arrow nav-arrow-next" id="nextButton" aria-label="Следующий участок">
+        <span aria-hidden="true">→</span><small>ДАЛЬШЕ</small>
+      </button>
+    </nav>
+
+    <div class="gesture-hint" id="gestureHint">
+      <span class="gesture-icon" aria-hidden="true">↔</span>
+      <span>Проведите пальцем или мышью, чтобы осмотреться</span>
+    </div>
+
+    <div class="keyboard-hint">ПЕРЕТАСКИВАЙТЕ МЫШЬ · ← → — ПЕРЕХОД МЕЖДУ УЧАСТКАМИ</div>
+
+    <div class="route-panel" id="routePanel" aria-hidden="true">
+      <div class="route-panel-inner">
+        <button class="close-button" id="closeRoute" aria-label="Закрыть">×</button>
+        <div class="panel-kicker">THE WALK · LONDON</div>
+        <h2>Четыре остановки на одной улице</h2>
+        <ol class="route-list">
+          <li><button class="route-step is-current" data-scene="londonEntry"><span>01</span><span class="route-step-copy"><strong>The Arrival</strong><small>Адрес № 42 и первая встреча с улицей</small></span><span class="route-step-arrow">↗</span></button></li>
+          <li><button class="route-step" data-scene="londonGallery"><span>02</span><span class="route-step-copy"><strong>The Gallery Row</strong><small>Дом № 42, фасады и первые работы</small></span><span class="route-step-arrow">↗</span></button></li>
+          <li><button class="route-step" data-scene="londonWindows"><span>03</span><span class="route-step-copy"><strong>The Art Windows</strong><small>Оригинальные картины в витринах и на стенах</small></span><span class="route-step-arrow">↗</span></button></li>
+          <li><button class="route-step" data-scene="londonSquare"><span>04</span><span class="route-step-copy"><strong>The Little Square</strong><small>Тихая площадь и последняя мысль маршрута</small></span><span class="route-step-arrow">↗</span></button></li>
+        </ol>
+        <div class="panel-note">Все восемь оригинальных работ находятся в лондонской части путешествия.</div>
+      </div>
+    </div>
+
+    <div class="art-modal" id="artModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Просмотр картины">
+      <div class="modal-backdrop" id="modalBackdrop"></div>
+      <div class="art-modal-card">
+        <button class="close-button modal-close" id="closeArt" aria-label="Закрыть">×</button>
+        <div class="modal-image-wrap"><img id="modalImage" src="" alt="Оригинальная работа Алёны Рубинштейн"></div>
+        <div class="modal-copy">
+          <div class="panel-kicker">ALENA RUBINSHTEIN · ORIGINAL ARTWORK</div>
+          <h2 id="modalTitle">Artwork 01</h2>
+          <p>Оригинальная работа из коллекции художницы.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="loading-screen" id="loadingScreen">
+      <div class="loading-mark">AR</div>
+      <div class="loading-title">RUBINSHTEIN STREET, 42</div>
+      <div class="loading-subtitle">PREPARING YOUR WALK</div>
+      <div class="loading-bar"><span></span></div>
+    </div>
+  </main>
+</body>
+</html>
